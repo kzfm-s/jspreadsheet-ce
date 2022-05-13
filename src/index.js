@@ -1423,7 +1423,7 @@ if (! jSuites && typeof(require) === 'function') {
             obj.headers[colNumber].setAttribute('data-x', colNumber);
             obj.headers[colNumber].style.textAlign = colAlign;
             if (obj.options.columns[colNumber].title) {
-                obj.headers[colNumber].setAttribute('title', obj.options.columns[colNumber].title);
+                obj.headers[colNumber].setAttribute('title', obj.options.columns[colNumber].title.replace(/\r|\n/g,''));
             }
             if (obj.options.columns[colNumber].id) {
                 obj.headers[colNumber].setAttribute('id', obj.options.columns[colNumber].id);
@@ -6314,7 +6314,7 @@ if (! jSuites && typeof(require) === 'function') {
                     // If cell is highlighted
                     if (! highlighted || obj.records[j][i].classList.contains('highlight')) {
                         if (copyHeader == true) {
-                            header.push(obj.headers[i].innerText);
+                            header.push(obj.headers[i].innerText.replace(/\r|\n/g,''));
                         }
                         // Values
                         var value = obj.options.data[j][i];
